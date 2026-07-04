@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atharv Verma — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#top" class="logo">Atharv Verma<span class="cursor-blink">_</span></a>
+    <button id="navToggle" class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about"><span class="tag">01</span>about</a></li>
+      <li><a href="#skills"><span class="tag">02</span>skills</a></li>
+      <li><a href="#projects"><span class="tag">03</span>projects</a></li>
+      <li><a href="#certs"><span class="tag">04</span>certs</a></li>
+      <li><a href="#resume"><span class="tag">05</span>resume</a></li>
+      <li><a href="#contact"><span class="tag">06</span>contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="terminal-window hero-terminal">
+        <div class="terminal-bar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="terminal-title">visitor@atharv-verma: ~</span>
+        </div>
+        <div class="terminal-body">
+          <p class="line"><span class="prompt">$</span> Enthusiast Software Engineer</p>
+          <h1 class="hero-name">Atharv Verma</h1>
+          <p class="line typed-line"><span class="prompt">$</span> <span id="typedRole"></span><span class="cursor-blink">_</span></p>
+          <p class="hero-desc">First-year CSE undergrad at SRM Institute of Science and Technology — building production-style
+          software, obsessing over clean architecture, and grinding DSA daily. Currently a perfect
+          <strong>10.0 CGPA</strong> in Semester 2.</p>
+          <div class="hero-links">
+            <a href="mailto:verma.atharv@gmail.com" class="btn btn-primary">get in touch</a>
+            <a href="#resume" class="btn btn-outline">view resume</a>
+          </div>
+          <div class="hero-meta">
+            <a href="https://github.com/vermaatharv-source" target="_blank" rel="noopener">GitHub</a>
+            <span class="sep">·</span>
+            <a href="https://www.linkedin.com/in/atharvverma/" target="_blank" rel="noopener">LinkedIn</a>
+            <span class="sep">·</span>
+            <a href="https://leetcode.com/u/atharv5492" target="_blank" rel="noopener">LeetCode</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">scroll <span class="chevron">↓</span></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="section-head">
+      <span class="eyebrow">01 // about</span>
+      <h2>Building things, breaking them, then building them properly.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a Computer Science undergraduate at <strong>SRM Institute of Science and Technology</strong>,
+        Class of 2029, with a strong foundation in Data Structures, Algorithms, Object-Oriented Programming,
+        and software engineering principles.</p>
+        <p>I care about scalable, maintainable architecture over quick hacks — whether that's structuring a
+        C++ class hierarchy so a new feature doesn't touch existing code, or debugging cross-browser rendering
+        bugs in a vanilla JS front end. I maintain a disciplined daily LeetCode practice and I'm currently deep
+        in Advanced DSA in C++ and full-stack development with Node.js.</p>
+        <div class="stat-row">
+          <div class="stat">
+            <span class="stat-num">10.0</span>
+            <span class="stat-label">Sem 2 CGPA</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">4+</span>
+            <span class="stat-label">Shipped projects</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">2029</span>
+            <span class="stat-label">Expected grad</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-code">
+        <div class="terminal-window">
+          <div class="terminal-bar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="terminal-title">profile.json</span>
+          </div>
+          <div class="terminal-body code-body">
+<pre><span class="tk-punc">{</span>
+  <span class="tk-key">"name"</span><span class="tk-punc">:</span> <span class="tk-str">"Atharv Verma"</span><span class="tk-punc">,</span>
+  <span class="tk-key">"role"</span><span class="tk-punc">:</span> <span class="tk-str">"CSE Undergraduate"</span><span class="tk-punc">,</span>
+  <span class="tk-key">"institute"</span><span class="tk-punc">:</span> <span class="tk-str">"SRM IST"</span><span class="tk-punc">,</span>
+  <span class="tk-key">"batch"</span><span class="tk-punc">:</span> <span class="tk-str">"2025 - 2029"</span><span class="tk-punc">,</span>
+  <span class="tk-key">"cgpa"</span><span class="tk-punc">:</span> <span class="tk-punc">{</span> <span class="tk-key">"sem1"</span><span class="tk-punc">:</span> <span class="tk-num">9.7</span><span class="tk-punc">,</span> <span class="tk-key">"sem2"</span><span class="tk-punc">:</span> <span class="tk-num">10.0</span> <span class="tk-punc">}</span><span class="tk-punc">,</span>
+  <span class="tk-key">"focus"</span><span class="tk-punc">:</span> <span class="tk-punc">[</span>
+    <span class="tk-str">"DSA"</span><span class="tk-punc">,</span>
+    <span class="tk-str">"OOP Design"</span><span class="tk-punc">,</span>
+    <span class="tk-str">"Full-Stack Dev"</span>
+  <span class="tk-punc">]</span><span class="tk-punc">,</span>
+  <span class="tk-key">"status"</span><span class="tk-punc">:</span> <span class="tk-str">"open_to_internships"</span>
+<span class="tk-punc">}</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section alt">
+    <div class="section-head">
+      <span class="eyebrow">02 // skills</span>
+      <h2>Tools of the trade.</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Languages</h3>
+        <div class="chip-row">
+          <span class="chip">C</span><span class="chip">C++</span><span class="chip">Java</span>
+          <span class="chip">JavaScript (ES6+)</span><span class="chip">HTML5</span><span class="chip">CSS3</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Core CS Fundamentals</h3>
+        <div class="chip-row">
+          <span class="chip">OOP Design</span><span class="chip">Data Structures &amp; Algorithms</span>
+          <span class="chip">Memory Management</span><span class="chip">Pointers</span>
+          <span class="chip">Recursion</span><span class="chip">Complexity Analysis</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Engineering Practice</h3>
+        <div class="chip-row">
+          <span class="chip">Git &amp; GitHub</span><span class="chip">VS Code</span>
+          <span class="chip">Chrome DevTools</span><span class="chip">Debugging</span>
+          <span class="chip">SDLC</span><span class="chip">Technical Documentation</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Currently Building</h3>
+        <div class="chip-row">
+          <span class="chip glow">Advanced DSA in C++</span>
+          <span class="chip glow">Node.js / React</span>
+          <span class="chip glow">Full-Stack Web Dev</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="section-head">
+      <span class="eyebrow">03 // projects</span>
+      <h2>Things I've shipped.</h2>
+    </div>
+    <div class="projects-list">
+
+      <article class="project-card featured">
+        <div class="project-info">
+          <span class="project-tag">Featured · Live Demo</span>
+          <h3>NexaBank</h3>
+          <p class="project-sub">Banking Platform Front-End Architecture</p>
+          <p>Designed and developed the architectural backbone of a multi-page banking platform in vanilla
+          JavaScript, building a stateful transaction simulation engine that propagates balance updates
+          consistently across concurrent account views — laying the groundwork for an in-progress full-stack
+          (backend + persistent database) upgrade.</p>
+          <p>Built a component-driven, semantic HTML5 / modular CSS3 layer to decouple presentation from
+          business logic, achieving pixel-consistent rendering across 3+ browser engines.</p>
+          <div class="chip-row">
+            <span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript (ES6+)</span>
+          </div>
+          <div class="project-links">
+            <a href="https://vermaatharv-source.github.io/NexaBank/" target="_blank" rel="noopener">Live Demo →</a>
+            <a href="https://github.com/vermaatharv-source/NexaBank.git" target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-info">
+          <span class="project-tag">C++ · Object-Oriented Design</span>
+          <h3>Banking Management System</h3>
+          <p>A terminal-based banking engine solving a core extensibility problem: unifying divergent account
+          behaviors without duplicating transaction logic, via a C++ inheritance hierarchy with a shared base
+          class. New account types extend a single subclass rather than touching existing transaction code.</p>
+          <div class="project-links">
+            <a href="https://github.com/vermaatharv-source/BANKING_MANAGEMENT_SYSTEM.git" target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-info">
+          <span class="project-tag">C++ · Object-Oriented Design</span>
+          <h3>College ERP System</h3>
+          <p>A multi-student academic ERP handling attendance and grade administration at scale, using
+          dynamically managed STL vectors with automated 75%-threshold attendance enforcement and grade
+          computation, plus an ID-based authentication layer with real-time lockout on repeated failures.</p>
+          <div class="project-links">
+            <a href="https://github.com/vermaatharv-source/COLLEGE_ERP_SYSTEM.git" target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-info">
+          <span class="project-tag">C++ · Object-Oriented Design</span>
+          <h3>Library Management System</h3>
+          <p>A dual-portal architecture (Admin &amp; Student) enforcing role-based access control, with a
+          3-attempt account lockout mechanism, full book inventory, and issue/return tracking.</p>
+          <div class="project-links">
+            <a href="https://github.com/vermaatharv-source/LIBRARY_MANAGEMENT_SYSTEM.git" target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CERTS -->
+  <section id="certs" class="section alt">
+    <div class="section-head">
+      <span class="eyebrow">04 // certifications</span>
+      <h2>Keeping the fundamentals sharp.</h2>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <h3>GenAI Powered Data Analytics Job Simulation</h3>
+        <p class="cert-org">Tata · The Forage — June 2026</p>
+        <p>EDA, financial risk profiling, and AI-driven delinquency prediction for collections strategy.</p>
+      </div>
+      <div class="cert-card">
+        <h3>Career Essentials in Generative AI</h3>
+        <p class="cert-org">Microsoft · LinkedIn Learning — June 2026</p>
+        <p>GenAI fundamentals, Copilot, and Responsible AI governance.</p>
+      </div>
+      <div class="cert-card">
+        <h3>AI Tools &amp; ChatGPT Workshop</h3>
+        <p class="cert-org">be10X — June 2026</p>
+        <p>High-speed AI workflows for presentations, data analysis, and AI-assisted debugging.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume" class="section resume-section">
+    <div class="section-head">
+      <span class="eyebrow">05 // resume</span>
+      <h2>The full picture.</h2>
+    </div>
+    <div class="resume-panel">
+      <div class="resume-photo-wrap">
+        <div class="resume-photo">
+          <img src="profile.jpg" alt="Atharv Verma" id="profileImg">
+        </div>
+        <div class="resume-id">
+          <h3>Atharv Verma</h3>
+          <p>B.Tech CSE · SRM IST · Class of 2029</p>
+          <a href="Atharv_Verma_Resume_Updated.pdf" download class="btn btn-primary btn-small">download resume</a>
+        </div>
+      </div>
+      <div class="resume-embed">
+        <div class="terminal-window">
+          <div class="terminal-bar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="terminal-title">Atharv_Verma_Resume_Updated.pdf</span>
+          </div>
+          <iframe src="Atharv_Verma_Resume_Updated.pdf" class="pdf-frame" title="Atharv Verma Resume"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-section">
+    <div class="section-head center">
+      <span class="eyebrow">06 // contact</span>
+      <h2>Let's build something.</h2>
+      <p class="contact-sub">Open to internships, collaborations, and interesting problems.</p>
+    </div>
+    <div class="contact-terminal terminal-window">
+      <div class="terminal-bar">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="terminal-title">contact.sh</span>
+      </div>
+      <div class="terminal-body">
+        <p class="line"><span class="prompt">$</span> cat contact.txt</p>
+        <p class="line">email: <a href="mailto:verma.atharv@gmail.com">verma.atharv@gmail.com</a></p>
+        <p class="line">linkedin: <a href="https://www.linkedin.com/in/atharvverma/" target="_blank" rel="noopener">linkedin.com/in/atharvverma</a></p>
+        <p class="line">github: <a href="https://github.com/vermaatharv-source" target="_blank" rel="noopener">github.com/vermaatharv-source</a></p>
+        <p class="line">leetcode: <a href="https://leetcode.com/u/atharv5492" target="_blank" rel="noopener">leetcode.com/u/atharv5492</a></p>
+        <p class="line"><span class="prompt">$</span> <span class="cursor-blink">_</span></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Designed &amp; built by Atharv Verma · <span id="year"></span></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
