@@ -22,10 +22,11 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#about"><span class="tag">01</span>about</a></li>
       <li><a href="#skills"><span class="tag">02</span>skills</a></li>
-      <li><a href="#projects"><span class="tag">03</span>projects</a></li>
-      <li><a href="#certs"><span class="tag">04</span>certs</a></li>
-      <li><a href="#resume"><span class="tag">05</span>resume</a></li>
-      <li><a href="#contact"><span class="tag">06</span>contact</a></li>
+      <li><a href="#experience"><span class="tag">03</span>experience</a></li>
+      <li><a href="#projects"><span class="tag">04</span>projects</a></li>
+      <li><a href="#certs"><span class="tag">05</span>certs</a></li>
+      <li><a href="#resume"><span class="tag">06</span>resume</a></li>
+      <li><a href="#contact"><span class="tag">07</span>contact</a></li>
     </ul>
   </div>
 </nav>
@@ -85,7 +86,7 @@
             <span class="stat-label">Sem 2 CGPA</span>
           </div>
           <div class="stat">
-            <span class="stat-num">4+</span>
+            <span class="stat-num">5+</span>
             <span class="stat-label">Shipped projects</span>
           </div>
           <div class="stat">
@@ -161,10 +162,47 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
     <div class="section-head">
-      <span class="eyebrow">03 // projects</span>
+      <span class="eyebrow">03 // experience</span>
+      <h2>Where I've put the skills to work.</h2>
+    </div>
+    <div class="experience-list">
+      <article class="experience-card">
+        <div class="experience-head">
+          <div>
+            <h3>Web Development Intern</h3>
+            <p class="experience-org">InAmigos Foundation</p>
+          </div>
+          <span class="experience-dates">Jul 7 – Jul 20, 2026</span>
+        </div>
+        <p>
+          During a two-week Web Development Internship at InAmigos Foundation, I was assigned four
+          progressively scoped tasks spanning front-end development, security auditing, and full-stack
+          engineering. I began by building a responsive HTML/CSS/JavaScript website integrated with the
+          Unsplash API for dynamic imagery. I then conducted a usability and security analysis of the
+          Foundation's live production site, inamigosfoundation.org.in, identifying a spam link injection
+          vulnerability along with several usability issues, and documented remediation steps. The core
+          deliverable was FarmFresh, a full-stack MERN marketplace connecting farmers directly to
+          consumers, which I architected end-to-end including atomic stock-decrement order handling and
+          MongoDB aggregation pipelines for trending-product logic, then deployed to production. My final
+          task involved producing an annotated NGO website mockup in HTML/CSS with accompanying Figma
+          import guidance for the design team. I received a Certificate of Internship on July 23, 2026,
+          recognizing the completion of all four deliverables.
+        </p>
+        <div class="chip-row">
+          <span class="chip">MERN Stack</span><span class="chip">MongoDB</span>
+          <span class="chip">Security Auditing</span><span class="chip">API Integration</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section alt">
+    <div class="section-head">
+      <span class="eyebrow">04 // projects</span>
       <h2>Things I've shipped.</h2>
     </div>
     <div class="projects-list">
@@ -172,6 +210,27 @@
       <article class="project-card featured">
         <div class="project-info">
           <span class="project-tag">Featured · Live Demo</span>
+          <h3>FarmFresh</h3>
+          <p class="project-sub">Farmer-to-Consumer Marketplace · Full-Stack MERN</p>
+          <p>A full-stack marketplace connecting farmers directly to consumers, built as the core
+          deliverable for the InAmigos Foundation Web Development Internship. Implements atomic
+          stock-decrement order processing to prevent overselling under concurrent checkouts, and a
+          MongoDB aggregation pipeline that surfaces trending products in real time.</p>
+          <p>Deployed with a Vercel front end and Render-hosted backend, taking the project from local
+          development to a live, publicly accessible production deployment.</p>
+          <div class="chip-row">
+            <span class="chip">MongoDB</span><span class="chip">Express.js</span><span class="chip">React</span><span class="chip">Node.js</span>
+          </div>
+          <div class="project-links">
+            <a href="https://farmfresh-marketplace.vercel.app/login" target="_blank" rel="noopener">Live Demo →</a>
+            <a href="https://github.com/vermaatharv-source/FarmFresh" target="_blank" rel="noopener">GitHub →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-info">
+          <span class="project-tag">Live Demo</span>
           <h3>NexaBank</h3>
           <p class="project-sub">Banking Platform Front-End Architecture</p>
           <p>Designed and developed the architectural backbone of a multi-page banking platform in vanilla
@@ -232,9 +291,9 @@
   </section>
 
   <!-- CERTS -->
-  <section id="certs" class="section alt">
+  <section id="certs" class="section">
     <div class="section-head">
-      <span class="eyebrow">04 // certifications</span>
+      <span class="eyebrow">05 // certifications</span>
       <h2>Keeping the fundamentals sharp.</h2>
     </div>
     <div class="certs-grid">
@@ -253,13 +312,38 @@
         <p class="cert-org">be10X — June 2026</p>
         <p>High-speed AI workflows for presentations, data analysis, and AI-assisted debugging.</p>
       </div>
+      <div class="cert-card">
+        <h3>Certificate of Internship — Web Development</h3>
+        <p class="cert-org">InAmigos Foundation — 23 Jul 2026</p>
+        <p>Completed a two-week Web Development Internship (7–20 July 2026) spanning front-end builds, a live-site security audit, and the full-stack FarmFresh marketplace.</p>
+      </div>
+      <div class="cert-card">
+        <h3>Climate Change Induced Disasters</h3>
+        <p class="cert-org">ISRO · IIRS Dehradun — 24 Jul 2026</p>
+        <p>Online course on climate-driven disaster risk, 22–26 June 2026, 100% attendance, hosted via the IIRS Outreach Programme.</p>
+      </div>
+      <div class="cert-card">
+        <h3>Problem Solving (Basic)</h3>
+        <p class="cert-org">HackerRank — 02 Aug 2026</p>
+        <p>Verified skill certification covering core algorithmic problem-solving fundamentals.</p>
+      </div>
+      <div class="cert-card">
+        <h3>Java (Basic)</h3>
+        <p class="cert-org">HackerRank — 22 Jul 2026</p>
+        <p>Verified skill certification covering core Java language fundamentals.</p>
+      </div>
+      <div class="cert-card">
+        <h3>Alpha — DSA with Java</h3>
+        <p class="cert-org">Apna College — 2026</p>
+        <p>Completed the DSA-with-Java course track, covering core data structures and algorithmic patterns in Java.</p>
+      </div>
     </div>
   </section>
 
   <!-- RESUME -->
-  <section id="resume" class="section resume-section">
+  <section id="resume" class="section resume-section alt">
     <div class="section-head">
-      <span class="eyebrow">05 // resume</span>
+      <span class="eyebrow">06 // resume</span>
       <h2>The full picture.</h2>
     </div>
     <div class="resume-panel">
@@ -288,7 +372,7 @@
   <!-- CONTACT -->
   <section id="contact" class="section contact-section">
     <div class="section-head center">
-      <span class="eyebrow">06 // contact</span>
+      <span class="eyebrow">07 // contact</span>
       <h2>Let's build something.</h2>
       <p class="contact-sub">Open to internships, collaborations, and interesting problems.</p>
     </div>
