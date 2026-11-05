@@ -262,3 +262,19 @@ footer{position:relative;z-index:1;text-align:center;padding:30px;font-size:.75r
 #projects.in .files button:nth-child(10){transition-delay:1.32s}
 @media(max-width:860px){.trophy{grid-template-columns:1fr}.tro-img img{height:150px}}
 @media(prefers-reduced-motion:reduce){.aurora i,.grain,.badges span.gold{animation:none!important}}
+
+/* ===== performance pass (GitHub Pages smoothness) ===== */
+.bar{width:100%;transform:scaleX(0);transform-origin:0 50%;will-change:transform}
+.top{backdrop-filter:none;-webkit-backdrop-filter:none;background:color-mix(in srgb,var(--bg) 82%,transparent)}
+.spot{mix-blend-mode:normal;will-change:background}
+#rain,#trail{will-change:transform;transform:translateZ(0)}
+.aurora i{will-change:transform}
+.grain{will-change:transform}
+.ghost{will-change:transform}
+.h{will-change:translate}
+.wipe{will-change:clip-path}
+.badges span.gold{animation:none}
+.badges span.gold::after{content:"";position:absolute;inset:-1px;border-radius:20px;box-shadow:0 0 34px 0 var(--a3);opacity:0;pointer-events:none;animation:glowo 2.4s ease-in-out infinite}
+.badges span.gold{position:relative}
+@keyframes glowo{50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.badges span.gold::after{animation:none!important}}

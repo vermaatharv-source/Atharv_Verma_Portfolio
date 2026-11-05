@@ -82,10 +82,19 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return
  if(seen.has(s))return;seen.add(s);s.classList.add('in');
  if(s.id==='about')counters();
  if(s.id==='skills')$$('.ln').forEach(l=>{l.style.opacity=1;l.style.transform='none'})}),{threshold:0,rootMargin:'0px 0px -22% 0px'});
-slides.forEach(s=>io.observe(s));
-addEventListener('scroll',()=>{const h=document.documentElement;let c=0;slides.forEach((s,k)=>{if(s.getBoundingClientRect().top<=innerHeight*.5)c=k});if(c!==cur)setCur(c);$('#bar').style.width=scrollY/(h.scrollHeight-innerHeight)*100+'%';
- if(!RM)$$('.ghost').forEach(g=>{const r=g.parentElement.getBoundingClientRect();g.style.setProperty('--py',(r.top*.25)+'px')});
- if(!RM&&innerWidth>860)$$('.h').forEach(h=>{const r=h.getBoundingClientRect();h.style.translate=Math.max(-90,Math.min(90,(r.top-innerHeight*.35)*.12))+'px 0'})},{passive:true});
+const ghosts=$$('.ghost'),heads=$$('.h'),barEl=$('#bar');let sTick=false;
+function onScroll(){if(sTick)return;sTick=true;requestAnimationFrame(()=>{sTick=false;
+ const h=document.documentElement,vh=innerHeight,sy=scrollY;
+ /* all reads first */
+ let c=0;slides.forEach((s,k)=>{if(s.getBoundingClientRect().top<=vh*.5)c=k});
+ const gT=RM?[]:ghosts.map(g=>g.parentElement.getBoundingClientRect().top);
+ const hT=(!RM&&innerWidth>860)?heads.map(x=>x.getBoundingClientRect().top):[];
+ /* then all writes */
+ if(c!==cur)setCur(c);
+ barEl.style.transform='scaleX('+(sy/Math.max(1,h.scrollHeight-vh))+')';
+ gT.forEach((t,i)=>ghosts[i].style.setProperty('--py',(t*.25)+'px'));
+ hT.forEach((t,i)=>{heads[i].style.translate=Math.max(-90,Math.min(90,(t-vh*.35)*.12))+'px 0'})})}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
 addEventListener('keydown',e=>{if(!$('#pal').hidden){palKey(e);return}
  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openPal();return}
  if(e.target.matches('input,textarea'))return;
@@ -112,16 +121,26 @@ function typeCode(){const el=$('#hcode');if(RM){el.innerHTML=hc;return}let i=0,o
   if(i>=plain.length)return;if(plain[i]==='<'){const j=plain.indexOf('>',i);out+=plain.slice(i,j+1);i=j+1}else out+=plain[i++];el.innerHTML=out;setTimeout(f,18)})()}
 function counters(){$$('[data-n]').forEach(el=>{const to=+el.dataset.n,d=+el.dataset.d||0,sf=el.dataset.s||'',t0=performance.now();
  (function f(n){const p=Math.min((n-t0)/1500,1);el.textContent=(to*(1-Math.pow(1-p,4))).toFixed(d)+sf;if(p<1)requestAnimationFrame(f)})(t0)})}
-setTimeout(()=>{slides[0].classList.add('in');seen.add(slides[0]);scramble($('#name'),'Atharv Verma');typeCode()},350);
-const ph=$('#photo');addEventListener('pointermove',e=>{if(RM||innerWidth<860)return;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;ph.style.transform=`perspective(600px) rotateY(${x*28}deg) rotateX(${-y*28}deg)`});
+/* wait for fonts + images before animating, so nothing reflows mid-animation */
+const loaded=new Promise(r=>document.readyState==='complete'?r():addEventListener('load',r,{once:true}));
+const fontsOk=document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve();
+const heroImg=$('#heroImg'),imgOk=heroImg&&heroImg.decode?heroImg.decode().catch(()=>{}):Promise.resolve();
+Promise.race([Promise.all([loaded,fontsOk,imgOk]),new Promise(r=>setTimeout(r,2500))]).then(()=>requestAnimationFrame(()=>{
+ slides.forEach(s=>io.observe(s));
+ slides[0].classList.add('in');seen.add(slides[0]);scramble($('#name'),'Atharv Verma');typeCode();
+ /* heavy PDF iframe loads after the intro, not during it */
+ const fr=$('.res iframe');if(fr&&fr.dataset.src){const go=()=>{if(fr.dataset.src){fr.src=fr.dataset.src;delete fr.dataset.src}};setTimeout(go,3500);
+  new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){go();o.disconnect()}},{rootMargin:'200% 0px'}).observe($('#resume'))}}));
+const ph=$('#photo');
 
 /* ---------- MATRIX RAIN ---------- */
 const cv=$('#rain'),cx=cv.getContext('2d');let cols,drops;
 function rs(){cv.width=innerWidth;cv.height=innerHeight;cols=Math.floor(innerWidth/18);drops=Array.from({length:cols},()=>Math.random()*-50)}
 rs();addEventListener('resize',rs);
-if(!RM)(function draw(){cx.fillStyle=bgc+'1f';cx.fillRect(0,0,cv.width,cv.height);cx.font='14px JetBrains Mono';
- const g='01{}<>/;=+*#$ABCDEF';drops.forEach((y,i)=>{const d=Math.hypot(i*18-mx,y*18-my),n=d<150;cx.fillStyle=n?fgc:ac;cx.globalAlpha=n?1:.75;cx.fillText(g[Math.random()*g.length|0],i*18,y*18);drops[i]=y*18>cv.height&&Math.random()>.975?0:y+.45});
- requestAnimationFrame(draw)})();
+if(!RM){let last=0;(function draw(now){requestAnimationFrame(draw);if(now-last<33)return;const k=Math.min((now-last)/16.67,4);last=now;
+ cx.fillStyle=bgc+'3a';cx.fillRect(0,0,cv.width,cv.height);cx.font='14px JetBrains Mono';
+ const g='01{}<>/;=+*#$ABCDEF';drops.forEach((y,i)=>{const d=Math.hypot(i*18-mx,y*18-my),n=d<150;cx.fillStyle=n?fgc:ac;cx.globalAlpha=n?1:.75;cx.fillText(g[Math.random()*g.length|0],i*18,y*18);drops[i]=y*18>cv.height&&Math.random()>.975?0:y+.45*k});
+ })(0)}
 
 /* ---------- COMMAND PALETTE ---------- */
 const cmds=[...slides.map((s,i)=>['goto '+s.dataset.name,()=>goTo(i)]),...Object.keys(TH).map(t=>['theme: '+t,()=>setTheme(t)]),['copy email',copyMail],['open FarmFresh live',()=>open('https://farmfresh-marketplace.vercel.app/login','_blank')],['open GitHub',()=>open(gh,'_blank')]];
@@ -147,9 +166,18 @@ function kon(k){kb.push(k);kb=kb.slice(-10);if(kb.join('')===KK){document.body.c
 $$('.cert,.cm1,.nums div,.pane,.files button,.res-l').forEach(e=>e.classList.add('lit'));
 let litPrev=null;const tr=$('#trail'),tx=tr.getContext('2d'),T=[];
 function rt(){tr.width=innerWidth;tr.height=innerHeight}rt();addEventListener('resize',rt);
-if(!RM)(function f(){tx.clearRect(0,0,tr.width,tr.height);T.forEach(p=>p.l-=.04);while(T.length&&T[0].l<=0)T.shift();
- T.forEach(p=>{tx.beginPath();tx.globalAlpha=p.l*.8;tx.fillStyle=ac;tx.shadowColor=ac;tx.shadowBlur=20;tx.arc(p.x,p.y,p.l*5,0,7);tx.fill()});tx.globalAlpha=1;requestAnimationFrame(f)})();
-addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;const st=document.documentElement.style;st.setProperty('--mx',mx+'px');st.setProperty('--my',my+'px');
- if(RM)return;T.push({x:mx,y:my,l:1});
- const t=e.target.closest&&e.target.closest('.lit');if(litPrev&&litPrev!==t){litPrev.style.removeProperty('--x');litPrev.style.removeProperty('--y')}litPrev=t;if(t){const b=t.getBoundingClientRect();t.style.setProperty('--x',mx-b.left+'px');t.style.setProperty('--y',my-b.top+'px')}
- $$('.btn').forEach(b=>{const r=b.getBoundingClientRect(),dx=mx-(r.left+r.width/2),dy=my-(r.top+r.height/2);b.style.translate=Math.hypot(dx,dy)<95?`${dx*.3}px ${dy*.3}px`:''})});
+let trailOn=false;
+function trailLoop(){tx.clearRect(0,0,tr.width,tr.height);T.forEach(p=>p.l-=.04);while(T.length&&T[0].l<=0)T.shift();
+ tx.fillStyle=ac;T.forEach(p=>{tx.globalAlpha=p.l*.22;tx.beginPath();tx.arc(p.x,p.y,p.l*12,0,7);tx.fill();tx.globalAlpha=p.l*.8;tx.beginPath();tx.arc(p.x,p.y,p.l*5,0,7);tx.fill()});
+ tx.globalAlpha=1;if(T.length)requestAnimationFrame(trailLoop);else{trailOn=false;tx.clearRect(0,0,tr.width,tr.height)}}
+const spotEl=$('.spot'),btns=$$('.btn');let pTick=false,pe=null;
+addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;pe=e;if(!RM){T.push({x:mx,y:my,l:1});if(!trailOn){trailOn=true;requestAnimationFrame(trailLoop)}}
+ if(pTick)return;pTick=true;requestAnimationFrame(()=>{pTick=false;
+  spotEl.style.setProperty('--mx',mx+'px');spotEl.style.setProperty('--my',my+'px');
+  if(RM)return;
+  const t=pe.target.closest&&pe.target.closest('.lit');
+  if(litPrev&&litPrev!==t){litPrev.style.removeProperty('--x');litPrev.style.removeProperty('--y')}litPrev=t;
+  if(t){const b=t.getBoundingClientRect();t.style.setProperty('--x',mx-b.left+'px');t.style.setProperty('--y',my-b.top+'px')}
+  const rs=btns.map(b=>b.getBoundingClientRect());
+  btns.forEach((b,k)=>{const r=rs[k],dx=mx-(r.left+r.width/2),dy=my-(r.top+r.height/2);b.style.translate=Math.hypot(dx,dy)<95?`${dx*.3}px ${dy*.3}px`:''});
+  if(innerWidth>=860){const x=mx/innerWidth-.5,y=my/innerHeight-.5;ph.style.transform=`perspective(600px) rotateY(${x*28}deg) rotateX(${-y*28}deg)`}})});

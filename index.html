@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="profile.jpg" as="image">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -44,7 +45,7 @@
       </div>
     </div>
     <div class="hero-r st" style="--i:3">
-      <div class="photo" id="photo"><img src="profile.jpg" alt="Atharv Verma" id="heroImg"></div>
+      <div class="photo" id="photo"><img src="profile.jpg" alt="Atharv Verma" id="heroImg" width="210" height="210" decoding="async" fetchpriority="high"></div>
       <pre class="code" id="hcode"></pre>
     </div>
   </div>
@@ -104,7 +105,7 @@
     <span class="ghost" aria-hidden="true">05</span>
     <p class="file st">$ git log --oneline certs</p>
     <h2 class="h split">Proof. Not promises.</h2>
-    <div class="trophy st" style="--i:2"><div class="tro-img"><img src="nielit-trophy.jpg" alt="NIELIT trophy" onerror="this.remove()"><img src="nielit-certificate.jpg" alt="NIELIT certificate" onerror="this.remove()"></div><div class="tro-t"><span class="hash">★ highlight</span><h3>NIELIT</h3><p class="tro-l">Trophy + Certificate</p><p>Recognised by NIELIT with a trophy and a certificate for my work.</p></div></div>
+    <div class="trophy st" style="--i:2"><div class="tro-img"><img src="nielit-trophy.jpg" alt="NIELIT trophy" decoding="async" loading="lazy" onerror="this.remove()"><img src="nielit-certificate.jpg" alt="NIELIT certificate" decoding="async" loading="lazy" onerror="this.remove()"></div><div class="tro-t"><span class="hash">★ highlight</span><h3>NIELIT</h3><p class="tro-l">Trophy + Certificate</p><p>Recognised by NIELIT with a trophy and a certificate for my work.</p></div></div>
     <div class="certs" id="certsList"></div>
   </div>
 </section>
@@ -115,9 +116,9 @@
     <p class="file st">// resume.pdf</p>
     <h2 class="h split">The record.</h2>
     <div class="res st" style="--i:2">
-      <div class="res-l"><img src="profile.jpg" alt="Atharv Verma" id="profileImg"><p>B.Tech CSE · SRM IST · 2029</p>
+      <div class="res-l"><img src="profile.jpg" alt="Atharv Verma" id="profileImg" width="130" height="130" decoding="async" loading="lazy"><p>B.Tech CSE · SRM IST · 2029</p>
       <a href="Atharv_Verma_Resume.pdf" download class="btn p">download.pdf</a></div>
-      <iframe src="Atharv_Verma_Resume.pdf" title="Atharv Verma Resume"></iframe>
+      <iframe data-src="Atharv_Verma_Resume.pdf" title="Atharv Verma Resume"></iframe>
     </div>
   </div>
 </section>
