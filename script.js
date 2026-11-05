@@ -129,15 +129,16 @@ Promise.race([Promise.all([loaded,fontsOk,imgOk]),new Promise(r=>setTimeout(r,25
  slides.forEach(s=>io.observe(s));
  slides[0].classList.add('in');seen.add(slides[0]);scramble($('#name'),'Atharv Verma');typeCode();
  /* heavy PDF iframe loads after the intro, not during it */
- const fr=$('.res iframe');if(fr&&fr.dataset.src){const go=()=>{if(fr.dataset.src){fr.src=fr.dataset.src;delete fr.dataset.src}};setTimeout(go,3500);
+ const fr=$('.res iframe');if(fr&&fr.dataset.src&&!matchMedia('(max-width:860px)').matches){const go=()=>{if(fr.dataset.src){fr.src=fr.dataset.src;delete fr.dataset.src}};setTimeout(go,3500);
   new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){go();o.disconnect()}},{rootMargin:'200% 0px'}).observe($('#resume'))}}));
 const ph=$('#photo');
 
 /* ---------- MATRIX RAIN ---------- */
 const cv=$('#rain'),cx=cv.getContext('2d');let cols,drops;
-function rs(){cv.width=innerWidth;cv.height=innerHeight;cols=Math.floor(innerWidth/18);drops=Array.from({length:cols},()=>Math.random()*-50)}
+function rs(){if(innerWidth===cv.width&&innerHeight<=cv.height)return;const wc=innerWidth!==cv.width;cv.width=innerWidth;cv.height=Math.max(innerHeight,cv.height);if(wc||!drops){cols=Math.floor(innerWidth/18);drops=Array.from({length:cols},()=>Math.random()*-50)}}
 rs();addEventListener('resize',rs);
-if(!RM){let last=0;(function draw(now){requestAnimationFrame(draw);if(now-last<33)return;const k=Math.min((now-last)/16.67,4);last=now;
+const FR=matchMedia('(pointer:coarse)').matches?42:33;
+if(!RM){let last=0;(function draw(now){requestAnimationFrame(draw);if(now-last<FR)return;const k=Math.min((now-last)/16.67,4);last=now;
  cx.fillStyle=bgc+'3a';cx.fillRect(0,0,cv.width,cv.height);cx.font='14px JetBrains Mono';
  const g='01{}<>/;=+*#$ABCDEF';drops.forEach((y,i)=>{const d=Math.hypot(i*18-mx,y*18-my),n=d<150;cx.fillStyle=n?fgc:ac;cx.globalAlpha=n?1:.75;cx.fillText(g[Math.random()*g.length|0],i*18,y*18);drops[i]=y*18>cv.height&&Math.random()>.975?0:y+.45*k});
  })(0)}
@@ -165,13 +166,13 @@ function kon(k){kb.push(k);kb=kb.slice(-10);if(kb.join('')===KK){document.body.c
 /* ---------- LIGHT UNDER THE MOUSE ---------- */
 $$('.cert,.cm1,.nums div,.pane,.files button,.res-l').forEach(e=>e.classList.add('lit'));
 let litPrev=null;const tr=$('#trail'),tx=tr.getContext('2d'),T=[];
-function rt(){tr.width=innerWidth;tr.height=innerHeight}rt();addEventListener('resize',rt);
+function rt(){if(innerWidth===tr.width&&innerHeight<=tr.height)return;tr.width=innerWidth;tr.height=Math.max(innerHeight,tr.height)}rt();addEventListener('resize',rt);
 let trailOn=false;
 function trailLoop(){tx.clearRect(0,0,tr.width,tr.height);T.forEach(p=>p.l-=.04);while(T.length&&T[0].l<=0)T.shift();
  tx.fillStyle=ac;T.forEach(p=>{tx.globalAlpha=p.l*.22;tx.beginPath();tx.arc(p.x,p.y,p.l*12,0,7);tx.fill();tx.globalAlpha=p.l*.8;tx.beginPath();tx.arc(p.x,p.y,p.l*5,0,7);tx.fill()});
  tx.globalAlpha=1;if(T.length)requestAnimationFrame(trailLoop);else{trailOn=false;tx.clearRect(0,0,tr.width,tr.height)}}
 const spotEl=$('.spot'),btns=$$('.btn');let pTick=false,pe=null;
-addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;pe=e;if(!RM){T.push({x:mx,y:my,l:1});if(!trailOn){trailOn=true;requestAnimationFrame(trailLoop)}}
+addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;mx=e.clientX;my=e.clientY;pe=e;if(!RM){T.push({x:mx,y:my,l:1});if(!trailOn){trailOn=true;requestAnimationFrame(trailLoop)}}
  if(pTick)return;pTick=true;requestAnimationFrame(()=>{pTick=false;
   spotEl.style.setProperty('--mx',mx+'px');spotEl.style.setProperty('--my',my+'px');
   if(RM)return;

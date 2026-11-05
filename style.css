@@ -278,3 +278,22 @@ footer{position:relative;z-index:1;text-align:center;padding:30px;font-size:.75r
 .badges span.gold{position:relative}
 @keyframes glowo{50%{opacity:1}}
 @media(prefers-reduced-motion:reduce){.badges span.gold::after{animation:none!important}}
+
+
+/* ===== mobile pass ===== */
+html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+@supports(height:100svh){.slide{min-height:100svh}}
+@media(hover:none),(pointer:coarse){
+ .spot,#trail,.grain{display:none}
+ .aurora i{filter:blur(48px)}
+ .btn{translate:none!important}
+ .btn::before{display:none}
+}
+@media(max-width:860px){
+ .aurora i:nth-child(3){display:none}
+ .st{filter:blur(3px)}
+ .res iframe{display:none}
+ .res-l img{margin-bottom:10px}
+ .ghost{display:none}
+ .badges span{font-size:.68rem;padding:5px 10px}
+}
